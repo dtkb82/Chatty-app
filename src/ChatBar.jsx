@@ -26,13 +26,11 @@ class ChatBar extends Component {
 			<footer className="chatbar">
   				<input
   					className="chatbar-username"
-  					value={this.state.newUser}
   					onChange={this.userChanged}
   				 	placeholder="Your Name (Optional)"
   				 	defaultValue={this.props.currentUser.name} />
   				<input 
   					className="chatbar-message"
-  					value={this.state.newMessage}
   					onChange={this.messageChanged}
   					placeholder="Type a message and hit ENTER"
   					onKeyPress={e => {
@@ -47,16 +45,15 @@ class ChatBar extends Component {
     );
   }
 
-  submitMessage = () => {
-  	this.props.onSubmit( {
-  		content: this.state.message,
-  		username: this.state.username
-  	});
-  }
+	  submitMessage = () => {
+	  	this.props.onSubmit (
+	  		{
+	  			content: this.state.message,
+	  			username: this.state.username
+	  		}
+	  	);  		
+  	}
+}
 	
 
-
-
-
-}
 export default ChatBar;

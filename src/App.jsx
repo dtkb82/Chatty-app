@@ -23,12 +23,25 @@ class App extends Component {
 					};
 		}
 
-	InputMessages = newMessage => {
-		this.setState(prevState => ({
-			prevState,
-			messages: prevState.messages.concat(newMessage)	
-		}));
-	};
+	inputContent = (message) => {
+		this.setState({
+			messages: this.state.messages.concat([{
+				username: message.username,
+				content: message.content
+			}])
+		})
+	}
+	// 	const newMessage = {
+	// 		id: 3,
+	// 		username: this.state.username,
+	// 		content: content
+	// 	}
+
+	// 	let messages = this.state.messages
+	// 	messages.push(newMessage)
+	// 	this.setState({messages: messages})
+
+	
 
 	componentDidMount() {
   		console.log("componentDidMount <App />");
@@ -51,7 +64,7 @@ class App extends Component {
   				<a href="/" className="navbar-brand">Chatty</a>
 			</nav>
     			<MessageList messages={this.state.messages} />
-    			<ChatBar currentUser={this.state.currentUser}/>
+    			<ChatBar currentUser={this.state.currentUser} messages={this.state.messages} onSubmit={this.inputContent}/>
     	</div>
     );
   }
