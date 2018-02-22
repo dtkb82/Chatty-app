@@ -17,7 +17,7 @@ open http://localhost:3000
 
 !["Multiple users"](https://github.com/dtkb82/Chatty-app/blob/master/docs/chattyApp1.png)
 
-!["With gif"](https://github.com/dtkb82/Chatty-app/blob/master/docs/chattyApp1.png)
+!["With gif"](https://github.com/dtkb82/Chatty-app/blob/master/docs/chattyApp2.png)
 
 ### Dependencies
 
