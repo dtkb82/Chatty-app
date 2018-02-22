@@ -17,44 +17,50 @@ class ChatBar extends Component {
 	userChanged = e => {
 		this.setState({ username: e.target.value });
 	};
+
+	userClear = e => {
+		this.setState({ username: e.target.value = "" });
+	};
 	
 
-  render() {
-  	console.log("Rendering <ChatBar/>");
-    return (
-    	<div>
+	render() {
+		console.log("Rendering <ChatBar/>");
+	return (
+		<div>
 			<footer className="chatbar">
-  				<input
-  					className="chatbar-username"
-  					onChange={this.userChanged}
-  				 	placeholder="Your Name (Optional)"
-  				 	defaultValue={this.props.currentUser.name}
-  				 	onKeyPress={e => {
-  				 		if (e.key === "Enter") {
-  				 			this.submitUser();
-  				 		}
-  				 	}}
-  				 	 />
-  				<input 
-  					className="chatbar-message"
-  					onChange={this.messageChanged}
-  					placeholder="Type a message and hit ENTER"
-  					onKeyPress={e => {
-  						if (e.key === "Enter") {
-  							this.submitMessage();
-  						}				
-  					}}
-  					/>
+				<input
+					className="chatbar-username"
+					onChange={this.userChanged}
+				 	placeholder="Your Name (Optional)"
+				 	defaultValue={this.props.currentUser.name}
+				 	onClick={this.userClear}
+				 	onKeyPress={e => {
+				 		if (e.key === "Enter") {
+				 			this.submitUser();
+				 		}
+				 	}}
+				 	 />
+				<input 
+					className="chatbar-message"
+					onChange={this.messageChanged}
+					placeholder="Type a message and hit ENTER"
+					onKeyPress={e => {
+						if (e.key === "Enter") {
+							this.submitMessage();
+							e.target.value = ""
+						}				
+					}}
+					/>
 			</footer>
 		</div>
-    );
-  }
+	);
+	}
 
   	submitUser = () => {
   		this.props.onSubmit (
   			{
   			type: "postNotification",
-  			content: `User had changed name to ${this.state.username}`
+  			content: `Anonymous has changed name to ${this.state.username}`
   			}
   		);
   	}

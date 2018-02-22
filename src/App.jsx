@@ -13,7 +13,6 @@ class App extends Component {
 		};
 	}
 
-		// webSocket.onopen = function (event) {
 			inputContent = (message) => {
 				var msg = {
 						type: message.type,
@@ -30,8 +29,6 @@ class App extends Component {
   		this.socket = new WebSocket("ws:localhost:3001")
   		console.log("Connected to server");
   		
-
-
 	this.socket.onmessage = (event) => {
 		let displayMessage = JSON.parse(event.data);
 
@@ -43,12 +40,8 @@ class App extends Component {
 				console.log("this state", this.state);
 				this.setState({clientCount: users})
 				console.log("clientCount", this.state.clientCount)
-
 			}		
 	}
-
-
-
 	
   render() {
   	console.log("Rendering <App/>");
