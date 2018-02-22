@@ -25,12 +25,15 @@ wss.on('connection', (ws) => {
 
 		wss.clients.forEach(function each(client) {
 			if (client.readyState === ws.OPEN) {
-				let newMessage = JSON.parse(message)
-				newMessage.id = uuidv4()
-				// console.log(newMessage.id);
+				let newMessage = JSON.parse(message);
+				newMessage.id = uuidv4();
+				newMessage.online = server._connections;
+
+				console.log("connected users", newMessage.online);
+
 				client.send(JSON.stringify(newMessage));
-					console.log("dddfff", JSON.stringify(newMessage));
-					console.log('Client connected');
+					// console.log("new message", JSON.stringify(newMessage));
+					// console.log('Client connected');
 					// console.log(id);
 			}
 		});

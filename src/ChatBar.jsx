@@ -28,7 +28,13 @@ class ChatBar extends Component {
   					className="chatbar-username"
   					onChange={this.userChanged}
   				 	placeholder="Your Name (Optional)"
-  				 	defaultValue={this.props.currentUser.name} />
+  				 	defaultValue={this.props.currentUser.name}
+  				 	onKeyPress={e => {
+  				 		if (e.key === "Enter") {
+  				 			this.submitUser();
+  				 		}
+  				 	}}
+  				 	 />
   				<input 
   					className="chatbar-message"
   					onChange={this.messageChanged}
@@ -36,20 +42,29 @@ class ChatBar extends Component {
   					onKeyPress={e => {
   						if (e.key === "Enter") {
   							this.submitMessage();
-  						}
-  						
+  						}				
   					}}
-  				/>
+  					/>
 			</footer>
 		</div>
     );
   }
 
-	  submitMessage = () => {
-	  	this.props.onSubmit (
+  	submitUser = () => {
+  		this.props.onSubmit (
+  			{
+  			type: "postNotification",
+  			content: `User had changed name to ${this.state.username}`
+  			}
+  		);
+  	}
+
+	submitMessage = () => {
+		this.props.onSubmit (
 	  		{
-	  			content: this.state.message,
-	  			username: this.state.username
+	  		type: "postMessage",
+	  		content: this.state.message,
+	  		username: this.state.username
 	  		}
 	  	);  		
   	}

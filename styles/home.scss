@@ -43,7 +43,7 @@ body {
       padding: 5px;
     }
 
-    .message.system {
+    .message-system {
       font-style: italic;
       padding: 5px 20px;
     }
@@ -85,4 +85,15 @@ body {
       line-height: 60px;
       padding: 0 10px;
       text-decoration: none;
+    }
+
+    .navbar-users {
+      color: inherit;
+      display: block;
+      float: right;
+      font-weight: 200;
+      font-size: 14px;
+      height: 30px;
+      line-height: 60px;
+      padding: 0 10px;
     }
