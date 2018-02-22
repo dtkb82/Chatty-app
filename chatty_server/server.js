@@ -23,13 +23,14 @@ const wss = new SocketServer({ server });
 wss.on('connection', (ws) => {
 	ws.on('message', function incoming(message) {
 
-	
+		
 		wss.clients.forEach(function each(client) {
 			if (client.readyState === ws.OPEN) {
 				let newMessage = JSON.parse(message);
+				 
 				newMessage.id = uuidv4();
 				newMessage.online = server._connections;
-
+				 
 				let matchData = newMessage.content.match(/.*(jpg|png|gif)$/)
 
 				if (matchData) {
@@ -41,7 +42,7 @@ wss.on('connection', (ws) => {
 					)
 
 					let url = `https://api.giphy.com/v1/gifs/random?${qs}`
-
+					
 					fetch(url)
 						.then( resp => {
 							if (resp.ok) {
@@ -62,12 +63,7 @@ wss.on('connection', (ws) => {
 					var to_send = JSON.stringify(newMessage);
 					client.send(to_send);
 					console.log(`Sent: ${to_send}`);
-				}
-
-
-				console.log("connected users", newMessage.online);
-
-					
+				}					
 			}
 		});
 		

@@ -9,15 +9,15 @@ class ChatBar extends Component {
 			message: ""
 		}	
 	}
-
+	 
 	messageChanged = e => {
    		this.setState({ message: e.target.value });
 	};
-
+	 
 	userChanged = e => {
 		this.setState({ username: e.target.value });
 	};
-
+	
 	userClear = e => {
 		this.setState({ username: e.target.value = "" });
 	};
@@ -55,7 +55,7 @@ class ChatBar extends Component {
 		</div>
 	);
 	}
-
+	 
   	submitUser = () => {
   		this.props.onSubmit (
   			{

@@ -33,13 +33,14 @@ class App extends Component {
 		let displayMessage = JSON.parse(event.data);
 
 				const users = displayMessage.online
+
 				const messages = [...this.state.messages, displayMessage]
 				console.log("message", messages);
-				console.log("on the app side", users);
+
 				this.setState({messages})
-				console.log("this state", this.state);
+				  
 				this.setState({clientCount: users})
-				console.log("clientCount", this.state.clientCount)
+				
 			}		
 	}
 	
