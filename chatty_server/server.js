@@ -27,7 +27,6 @@ wss.on('connection', (ws) => {
 		wss.clients.forEach(function each(client) {
 			if (client.readyState === ws.OPEN) {
 				let newMessage = JSON.parse(message);
-				 
 				newMessage.id = uuidv4();
 				newMessage.online = server._connections;
 				 
@@ -53,7 +52,7 @@ wss.on('connection', (ws) => {
 						.then( json => {
 							let imageURL = json.data.image_url
 							console.log(`IMAGE URL: ${imageURL}`)
-							newMessage.content = `<img max-width: 40px src="${imageURL}" />`
+							newMessage.content = `<img style="width:40%;height:50%;" src="${imageURL}" />`
 							var to_send = JSON.stringify(newMessage);
 							client.send(to_send);
 							console.log(`Sent: ${to_send}`);

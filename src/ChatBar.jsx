@@ -45,7 +45,7 @@ class ChatBar extends Component {
 					onChange={this.messageChanged}
 					placeholder="Type a message and hit ENTER"
 					onKeyPress={e => {
-						if (e.key === "Enter") {
+						if (e.key === "Enter" && e.target.value !== "") {
 							this.submitMessage();
 							e.target.value = ""
 						}				
@@ -72,7 +72,7 @@ class ChatBar extends Component {
 	  		content: this.state.message,
 	  		username: this.state.username
 	  		}
-	  	);  		
+	  	);  	
   	}
 };
 	
