@@ -1,7 +1,7 @@
-React Boilerplate
+My Chatty App
 =====================
 
-A slack like chat app. Using ReactJS
+A slack like chat app. Using ReactJS. Send messages and GIF's to your friends. Happy Chatting!:)
 
 ## Usage
 
